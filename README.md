@@ -139,10 +139,6 @@ Uma empresa de cinema precisa de uma plataforma para gerenciar seu catálogo de 
             +deletaComentario()
             +listaComentario()
         }
-
-        Usuario "1" -- "0" Filme : Adiciona
-        Filme "1" -- "0" Comentario : Tem
-        Usuario "1" -- "0" Comentario : Escreve
 ```
 ### Uso:
 ```mermaid
