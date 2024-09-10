@@ -135,6 +135,7 @@ Uma empresa de cinema precisa de uma plataforma para gerenciar seu catálogo de 
             +int usuario_id
             +string titulo
             +string conteudo
+            +int nota
             +criaComentario()
             +editaComentario()
             +deletaComentario()
