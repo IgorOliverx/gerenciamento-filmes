@@ -100,9 +100,199 @@ Uma empresa de cinema precisa de uma plataforma para gerenciar seu catálogo de 
 
 ## Diagramas:
 ### Classe:
+```mermaid
+    classDiagram
+        class Usuario {
+            +int id
+            +string nome
+            +string email
+            +string senha
+            +criaUsuario()
+            +editaUsuario()
+            +deletaUsuario()
+        }
 
+        class Filme {
+            +int id
+            +int usuario_id
+            +string nome
+            +string descricao
+            +date estreia
+            +string genero
+            +criaFilme()
+            +editaFilme()
+            +deletaFilme()
+            +listaFilmes()
+            +listaFilmesUsuario()
+            +verFilme()
+        }
+
+        class Comentario {
+            +int id
+            +int filme_id
+            +int usuario_id
+            +string titulo
+            +string conteudo
+            +criaComentario()
+            +editaComentario()
+            +deletaComentario()
+            +listaComentario()
+        }
+
+        Usuario "1" -- "0" Filme : Adiciona
+        Filme "1" -- "0" Comentario : Tem
+        Usuario "1" -- "0" Comentario : Escreve
+```
 ### Uso:
+```mermaid
+    flowchart TD
+    %% Definição dos nós principais
+    AcessaPlataforma[Acessa a Plataforma]
+    ListarFilmes[Listar Filmes]
+    FazerLogin[Fazer Login]
+    CriarConta[Criar Conta]
+    UsuarioLogado[Usuário Logado]
+    VerFilme[Ver Filme]
+    VerFilmeUsuario[Ver Filme Usuário]
+    EditarUsuario[Editar Usuário]
+    DeletarUsuario[Deletar Usuário]
+    CriarFilme[Criar Filme]
+    EditarFilme[Editar Filme]
+    ExcluirFilme[Excluir Filme]
+    ListarComentarios[Listar Comentários]
+    CriarComentario[Criar Comentário]
+    EditarComentario[Editar Comentário]
+    DeletarComentario[Deletar Comentário]
 
+    %% Conexões principais
+    AcessaPlataforma --> ListarFilmes_sem_interação
+    AcessaPlataforma --> FazerLogin
+    AcessaPlataforma --> CriarConta
+    CriarConta --> FazerLogin
+
+    FazerLogin --> UsuarioLogado
+
+    UsuarioLogado --> ListarFilmes
+    UsuarioLogado --> CriarFilme
+    UsuarioLogado --> EditarUsuario
+    UsuarioLogado --> DeletarUsuario
+
+    ListarFilmes --> VerFilme
+    ListarFilmes --> VerFilmeUsuario
+
+    VerFilme --> ListarComentarios
+
+    VerFilmeUsuario --> ListarComentarios
+    VerFilmeUsuario --> EditarFilme
+    VerFilmeUsuario --> ExcluirFilme
+
+    ListarComentarios --> CriarComentario
+    ListarComentarios --> EditarComentario
+    ListarComentarios --> DeletarComentario
+```
 ### Fluxo:
+#### Usuário não logado
+```mermaid
+flowchart TD
+    %% Definindo as Páginas como Ações
+    P1[Página Inicial - Página de filmes sem interação]
+    P2[Página de Registro]
+    P3[Página de Login]
+    P4[Visualizar Filmes]
 
+    %% Definindo as Ações e Transições
+    A1[Registro Realizado]
+    A2[Login Realizado]
+
+    %% Fluxo de Registro
+    P1 -->|Acessar Registro| P2
+    P2 -->|Enviar Registro| A1
+    A1 -->|Redireciona para Login| P3
+
+    %% Fluxo de Login
+    P1 -->|Acessar Login| P3
+    P3 -->|Realizar Login| A2
+    A2 -->|Redireciona para Visualizar Filmes| P4
+
+    %% Estilizando as Páginas e Ações
+    classDef page fill:#d0f0c0,stroke:#333,stroke-width:2px,color:#000;
+    classDef action fill:#c0e0ff,stroke:#333,stroke-width:2px,color:#000;
+    class P1,P2,P3,P4,P5 page;
+    class A1,A2 action;
+
+    %% Estilizando as Conexões
+    linkStyle default stroke:#333,stroke-width:2px;
+```
+#### Usuário Logado Gerenciando Filmes e Comentários:
+```mermaid
+flowchart TD
+    %% Definindo o Ator
+    A1(Usuário Logado)
+
+    %% Definindo as Ações
+    P1[Listar Filmes]
+    P2[Ver Filme]
+    P3[Ver Filme Usuário]
+    P4[Criar Filme]
+    P5[Editar Filme]
+    P6[Excluir Filme]
+    P7[Listar Comentários]
+    P8[Criar Comentário]
+    P9[Editar Comentário]
+    P10[Deletar Comentário]
+
+    %% Fluxo de Ações
+    A1 -->|Acessa| P1
+    P1 -->|Seleciona Filme| P2
+    P1 -->|Seleciona Filme Usuário| P3
+
+    P2 -->|Ver Comentários| P7
+
+    P3 -->|Gerenciar Filme| P4
+    P3 -->|Editar Filme| P5
+    P3 -->|Gerenciar Comentários| P7
+    P3 -->|Excluir Filme| P6
+
+    P7 -->|Adicionar Comentário| P8
+    P7 -->|Editar Comentário| P9
+    P7 -->|Deletar Comentário| P10
+
+    %% Estilizando o Ator
+    classDef actor fill:#ffcccb,stroke:#333,stroke-width:2px,color:#000;
+    class A1 actor;
+
+    %% Estilizando as Ações
+    classDef action fill:#d0f0c0,stroke:#333,stroke-width:2px,color:#000;
+    class P1,P2,P3,P4,P5,P6,P7,P8,P9,P10 action;
+
+    %% Estilizando as Conexões
+    linkStyle default stroke:#333,stroke-width:2px;
+```
+#### Usuário Logado Gerenciando Perfil
+```mermaid
+flowchart TD
+    %% Definindo o Ator
+    A1(Usuário Logado)
+
+    %% Definindo as Páginas
+    P1[Acessar Perfil]
+    P2[Editar Perfil]
+    P3[Deletar Perfil]
+
+    %% Fluxo de Ações
+    A1 -->|Acessa| P1
+    P1 -->|Editar Perfil| P2
+    P1 -->|Deletar Perfil| P3
+
+    %% Estilizando o Ator
+    classDef actor fill:#ffcccb,stroke:#333,stroke-width:2px,color:#000;
+    class A1 actor;
+
+    %% Estilizando as Páginas
+    classDef page fill:#d0f0c0,stroke:#333,stroke-width:2px,color:#000;
+    class P1,P2,P3,P4 page;
+
+    %% Estilizando as Conexões
+    linkStyle default stroke:#333,stroke-width:2px;
+```
 ## Protótipos:
