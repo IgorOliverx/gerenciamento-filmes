@@ -120,6 +120,7 @@ Uma empresa de cinema precisa de uma plataforma para gerenciar seu catálogo de 
             +string descricao
             +date estreia
             +string genero
+            +string imagemCapa
             +criaFilme()
             +editaFilme()
             +deletaFilme()
