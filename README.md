@@ -116,7 +116,7 @@ Uma empresa de cinema precisa de uma plataforma para gerenciar seu catálogo de 
         class Filme {
             +int id
             +int usuario_id
-            +string nome
+            +string titulo
             +string descricao
             +date estreia
             +string genero
