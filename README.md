@@ -75,27 +75,28 @@ Uma empresa de cinema precisa de uma plataforma para gerenciar seu catálogo de 
     excludes    weekends
 
     section Planejamento e Prototipagem
-    Planejamento:         des1, 2024-01-01, 30d
-    Prototipagem:         des2, 2024-01-31, 28d
+    Planejamento:         des1, 2024-09-01, 30d
+    Prototipagem:         des2, 2024-10-01, 28d
 
     section Desenvolvimento Backend
-    Configuração do Ambiente: des3, 2024-02-28, 10d
-    Desenvolvimento de API:    des4, 2024-03-09, 45d
-    Integração com MongoDB:    des5, 2024-04-23, 20d
+    Configuração do Ambiente: des3, 2024-10-29, 10d
+    Desenvolvimento de API:    des4, 2024-11-08, 45d
+    Integração com MongoDB:    des5, 2024-12-22, 20d
 
     section Desenvolvimento Frontend
-    Design da Interface:       des6, 2024-03-01, 30d
-    Desenvolvimento de Frontend: des7, 2024-03-31, 60d
-    Integração com Backend:    des8, 2024-05-30, 20d
+    Design da Interface:       des6, 2024-10-01, 30d
+    Desenvolvimento de Frontend: des7, 2024-10-31, 60d
+    Integração com Backend:    des8, 2024-12-30, 20d
 
     section Testes e Ajustes
-    Testes Unitários:           des9, 2024-06-19, 15d
-    Testes de Integração:       des10, 2024-07-04, 15d
-    Ajustes Finais:             des11, 2024-07-19, 15d
+    Testes Unitários:           des9, 2025-01-19, 15d
+    Testes de Integração:       des10, 2025-02-03, 15d
+    Ajustes Finais:             des11, 2025-02-18, 15d
 
     section Lançamento
-    Preparação para Lançamento: des12, 2024-08-03, 10d
-    Lançamento:                 des13, 2024-08-13, 5d
+    Preparação para Lançamento: des12, 2025-03-04, 10d
+    Lançamento:                 des13, 2025-03-14, 5d
+
 ```
 
 ## Diagramas:
