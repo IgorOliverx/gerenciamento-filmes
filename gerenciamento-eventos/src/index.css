@@ -39,7 +39,7 @@
   input[type="search"],
   input[type="tel"],
   input[type="url"], textarea {
-    @apply block w-full p-2 text-slate-200 placeholder:text-slate-500 sm:text-sm bg-black outline-none outline-0;
+    @apply block w-2/3 p-2 text-slate-900 placeholder:text-slate-950 sm:text-sm bg-slate-200 outline-none outline-0;
   }
   label {
     @apply block text-sm font-medium leading-6 text-slate-900 first-letter:capitalize;
@@ -51,7 +51,7 @@
     @apply max-w-screen-lg mx-auto;
   }
   .primary-btn {
-    @apply flex w-full justify-center rounded-md bg-blue-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
+    @apply flex w-2/3 justify-center rounded-md bg-blue-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-400 disabled:cursor-wait;
   }
   .link-header {
     /* era bg blue 600*/
