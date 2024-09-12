@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 
 const ComentarioSchema = new mongoose.Schema({
-    filme_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Filme',
-        required: true
-    },
-    usuario_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Usuario',
-        required: true
-    },
+    // filme_id: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Filme',
+    //     required: true
+    // },
+    // usuario_id: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Usuario',
+    //     required: true
+    // },
     titulo: {
         type: String,
         required: true
