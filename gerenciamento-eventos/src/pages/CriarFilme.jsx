@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const CriarFilme = () => {
-    const [titulo, setTitulo] = useState("");
-    const [descricao, setDescricao] = useState("");
-    const [estreia, setEstreia] = useState("");
-    const [genero, setGenero] = useState("");
-    const [imagemCapa, setImagemCapa] = useState(null);
+    const [titulo, setTitulo] = useState([]);
+    const [descricao, setDescricao] = useState([]);
+    const [estreia, setEstreia] = useState([]);
+    const [genero, setGenero] = useState([]);
+    const [imagem_capa, setImagem_capa] = useState([]);
     const [isAuthenticated, setIsAuthenticated] = useState(true);
     const navigate = useNavigate();
 
@@ -38,19 +38,25 @@ export const CriarFilme = () => {
 
     const criarFilme = async (e) => {
         e.preventDefault();
-        const filme = new F
+        const filme= {
+            titulo: titulo,
+            genero: genero,
+            descricao: descricao,
+            estreia: estreia,
+            imagem_capa: imagem_capa,
+        }
 
         try {
 
-            await axios.post("http://localhost:8080/api/filmes", formData, {
+            await axios.post("http://localhost:8080/api/filmes", filme, {
                 headers: {
-                    "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             });
-            navigate("/");
+            navigate("/home");
         } catch (error) {
             console.error("Erro ao criar filme:", error);
+            alert(error);
         }
     };
 
@@ -106,7 +112,7 @@ export const CriarFilme = () => {
                     type='file'
                     name='imagem_capa'
                     id='imagem_capa'
-                    onChange={(e) => setImagemCapa(e.target.files[0])}
+                    onChange={(e) => setImagem_capa(e.target.value)}
                 />
                 <button type='submit' className='primary-btn'>Cadastrar</button>
             </form>
