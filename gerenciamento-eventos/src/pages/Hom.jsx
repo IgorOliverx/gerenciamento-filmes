@@ -18,12 +18,12 @@ export const Hom = () => {
 
     return (
         <>
-            <div className='w-2/3 mx-auto border-b-2 flex border-t-2 border-slate-800 mt-10'>
+            <div className='w-full px-28 justify-center mx-auto flex border-t-2 border-b-2 border-slate-800 mt-10 pt-6'>
                 {filmes.map((filme) => (
-                    <div key={filme.id} className='flex w-full'>
-                        <img src={Capa} alt="teste" className='w-1/2'/>
-                        <div className='w-1/2'>
-                            <h1 className='text-3xl'>{filme.titulo}</h1>
+                    <div key={filme.id} className='flex w-full justify-center'>
+                        <img src={Capa} alt="teste" className='w-1/3 h-4/5'/>
+                        <div className='w-1/2 pl-6'>
+                            <h1 className='text-4xl'>{filme.titulo}</h1>
                             <p>{filme.descricao}</p>
                         </div>
                     </div>

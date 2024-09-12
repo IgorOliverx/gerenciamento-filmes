@@ -32,6 +32,7 @@ function App() {
             <Route path='/cadastro' element={<Register /> } />
             <Route path='/filme' element={<CriarFilme /> } />
             <Route path='/home' element={<Hom />} />
+            <Route path='*' element={<Hom />} />
         </Routes>
         <Footer />
     </>

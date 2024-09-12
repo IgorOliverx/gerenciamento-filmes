@@ -8,8 +8,8 @@ export const CriarFilme = () => {
     const [descricao, setDescricao] = useState("");
     const [estreia, setEstreia] = useState("");
     const [genero, setGenero] = useState("");
-    const [imagemCapa, setImagemCapa] = useState(null); // Estado para o arquivo
-    const [isAuthenticated, setIsAuthenticated] = useState(true); // Estado para autenticação
+    const [imagemCapa, setImagemCapa] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -21,7 +21,6 @@ export const CriarFilme = () => {
                     return;
                 }
 
-                // Testar se o token é válido
                 await axios.get("http://localhost:8080/api/filme", {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -39,37 +38,31 @@ export const CriarFilme = () => {
 
     const criarFilme = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append("titulo", titulo);
-        formData.append("descricao", descricao);
-        formData.append("estreia", estreia);
-        formData.append("genero", genero);
-        if (imagemCapa) {
-            formData.append("imagem_capa", imagemCapa);
-        }
+        const filme = new F
 
         try {
+
             await axios.post("http://localhost:8080/api/filmes", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`, // Adicione o token no header
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             });
-            navigate("/"); // Redireciona após a criação do filme
+            navigate("/");
         } catch (error) {
             console.error("Erro ao criar filme:", error);
         }
     };
 
     if (!isAuthenticated) {
-        return null; // Ou algum indicador de carregamento enquanto redireciona
+        return null;
     }
 
     return (
         <>
             <p className='text-2xl w-screen text-center mt-5'>Cadastro de Filme</p>
             <form onSubmit={criarFilme}
-                className='w-2/4 gap-3 flex-wrap rounded-md py-10 bg-slate-900 border-2 border-slate-800 flex relative mx-auto justify-center'>
+                  className='w-2/4 gap-3 flex-wrap rounded-md py-10 bg-slate-900 border-2 border-slate-800 flex relative mx-auto justify-center'>
                 <label htmlFor="titulo" className='relative text-slate-300 w-full left-28 top-2 text-xs'>Título do filme</label>
                 <Input
                     value={titulo}

@@ -31,7 +31,7 @@
 
 @layer components {
   body{
-    @apply bg-slate-950 shadow-md w-screen h-screen
+    @apply bg-slate-950 shadow-md w-screen h-screen overflow-x-hidden;
   }
   input[type="text"],
   input[type="email"],
