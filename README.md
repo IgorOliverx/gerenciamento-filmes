@@ -295,3 +295,17 @@ flowchart TD
     linkStyle default stroke:#333,stroke-width:2px;
 ```
 ## Protótipos:
+### Baixa fidelidade:
+<p align="center">
+  <img src="[URL_DA_IMAGEM](https://github.com/user-attachments/assets/62d9117c-8f0c-4efe-a00b-ee96c8767d77)" alt="Baixa fidelidade" />
+</p>
+
+### Média fidelidade:
+<p align="center">
+  <img src="(https://github.com/user-attachments/assets/a11c3fad-33cc-41a5-aaf8-917b86928d31)" alt="Baixa fidelidade" />
+</p>
+
+### Alta fidelidade:
+<p align="center">
+  <img src="(https://github.com/user-attachments/assets/0634b621-77a7-45fe-8462-8c37d22df76f)" alt="Baixa fidelidade" />
+</p>
