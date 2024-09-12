@@ -7,6 +7,7 @@ import {CriarFilme} from "./pages/CriarFilme.jsx";
 
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import {Hom} from "./pages/Hom.jsx";
 
 function App() {
 
@@ -30,14 +31,8 @@ function App() {
             <Route path='/login' element={<Login /> } />
             <Route path='/cadastro' element={<Register /> } />
             <Route path='/filme' element={<CriarFilme /> } />
+            <Route path='/home' element={<Hom />} />
         </Routes>
-        {filmes.map((filme) => (
-            <div key={filme.id}>
-                <h1>{filme.titulo}</h1>
-                <p>{filme.genero}</p>
-                <p>{filme.descricao}</p>
-            </div>
-        ))}
         <Footer />
     </>
   )
