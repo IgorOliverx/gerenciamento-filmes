@@ -18,8 +18,8 @@ router.get(
 );
 
 // Rotas protegidas para criar, editar e deletar filmes
-router.post("/filmes", jwtMiddleware(FilmeController.criaFilmes));
-router.delete("/filmes/:id", jwtMiddleware(FilmeController.deletaFilme));
-router.put("/filmes/:id", jwtMiddleware(FilmeController.editaFilme));
+router.post("/filmes", FilmeController.criaFilmes);
+router.delete("/filmes/:id", FilmeController.deletaFilme);
+router.put("/filmes/:id", FilmeController.editaFilme);
 
 module.exports = router;

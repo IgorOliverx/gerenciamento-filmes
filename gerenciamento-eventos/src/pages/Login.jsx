@@ -1,25 +1,30 @@
 import Input from "../Input/index.jsx";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const Login = () => {
-    const [email, setEmail] = useState([]);
-    const [senha, setSenha] = useState([]);
+    const [email, setEmail] = useState(""); // Inicialize como string vazia
+    const [senha, setSenha] = useState(""); // Inicialize como string vazia
 
     const navigate = useNavigate();
 
-    const logarUsuario = (e) => {
+    const logarUsuario = async (e) => {
         e.preventDefault();
         const usuario = {
             email: email,
             senha: senha
+        };
+
+        try {
+            const response = await axios.post('http://localhost:8080/api/usuario/login', usuario);
+            localStorage.setItem("token", response.data.token); // Armazene o token no localStorage
+            navigate('/home');
+        } catch (error) {
+            console.error(error);
         }
-        axios.post('http://localhost:8080/api/usuario/login', usuario)
-            .then(() => {
-                navigate('/home')
-            }).catch(error => console.error(error))
-    }
+    };
+
     return (
         <>
             <p className='text-4xl w-screen text-center mt-5 mb-5'>Login</p>
@@ -45,5 +50,5 @@ export const Login = () => {
                 <button type='submit' className='primary-btn'>Login</button>
             </form>
         </>
-    )
-}
+    );
+};
