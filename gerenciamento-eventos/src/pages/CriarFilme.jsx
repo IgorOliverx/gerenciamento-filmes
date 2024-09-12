@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const CriarFilme = () => {
-    const [titulo, setTitulo] = useState("");
-    const [descricao, setDescricao] = useState("");
-    const [estreia, setEstreia] = useState("");
-    const [genero, setGenero] = useState("");
-    const [imagemCapa, setImagemCapa] = useState(null); // Estado para o arquivo
+    const [titulo, setTitulo] = useState([]);
+    const [descricao, setDescricao] = useState([]);
+    const [estreia, setEstreia] = useState([]);
+    const [genero, setGenero] = useState([]);
+    const [imagem_capa, setImagem_capa] = useState([]); // Estado para o arquivo
     const [isAuthenticated, setIsAuthenticated] = useState(true); // Estado para autenticação
     const navigate = useNavigate();
 
@@ -39,23 +39,21 @@ export const CriarFilme = () => {
 
     const criarFilme = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append("titulo", titulo);
-        formData.append("descricao", descricao);
-        formData.append("estreia", estreia);
-        formData.append("genero", genero);
-        if (imagemCapa) {
-            formData.append("imagem_capa", imagemCapa);
+        const filme = {
+            titulo: titulo,
+            descricao: descricao,
+            estreia: estreia,
+            genero: genero,
+            imagem_capa: imagem_capa,
         }
 
         try {
-            await axios.post("http://localhost:8080/api/filmes", formData, {
+            await axios.post('http://localhost:8080/api/filmes', filme, {
                 headers: {
-                    "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${localStorage.getItem("token")}`, // Adicione o token no header
                 },
             });
-            navigate("/"); // Redireciona após a criação do filme
+            navigate("/home"); // Redireciona após a criação do filme
         } catch (error) {
             console.error("Erro ao criar filme:", error);
         }
@@ -113,7 +111,7 @@ export const CriarFilme = () => {
                     type='file'
                     name='imagem_capa'
                     id='imagem_capa'
-                    onChange={(e) => setImagemCapa(e.target.files[0])}
+                    onChange={(e) => setImagem_capa(e.target.files[0])}
                 />
                 <button type='submit' className='primary-btn'>Cadastrar</button>
             </form>
