@@ -6,11 +6,9 @@ const cors = require("cors");
 
 const app = express();
 
-const corsOptions = {
-    origin: "http://localhost:5173"
-}
+
 // Middlewares
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 
 // Rotas
