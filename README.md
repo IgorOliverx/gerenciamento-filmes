@@ -297,15 +297,15 @@ flowchart TD
 ## Protótipos:
 ### Baixa fidelidade:
 <p align="center">
-  <img src="[URL_DA_IMAGEM](https://github.com/user-attachments/assets/62d9117c-8f0c-4efe-a00b-ee96c8767d77)" alt="Baixa fidelidade" />
+  <img src="https://github.com/user-attachments/assets/62d9117c-8f0c-4efe-a00b-ee96c8767d77" alt="Baixa Fidelidade" />
 </p>
 
 ### Média fidelidade:
 <p align="center">
-  <img src="(https://github.com/user-attachments/assets/a11c3fad-33cc-41a5-aaf8-917b86928d31)" alt="Baixa fidelidade" />
+  <img src="https://github.com/user-attachments/assets/a11c3fad-33cc-41a5-aaf8-917b86928d31" alt="Média fidelidade" />
 </p>
 
 ### Alta fidelidade:
 <p align="center">
-  <img src="(https://github.com/user-attachments/assets/0634b621-77a7-45fe-8462-8c37d22df76f)" alt="Baixa fidelidade" />
+  <img src="https://github.com/user-attachments/assets/0634b621-77a7-45fe-8462-8c37d22df76f" alt="Alta fidelidade" />
 </p>
