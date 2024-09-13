@@ -26,8 +26,8 @@ exports.criaFilmes = async (req, res) => {
     console.log('Método para criar  Filmes chamado corretamente.')
     const filme = new Filme({
         titulo: req.body.titulo,
-      //  usuario_id: req.body.usuario_id, // ID do usuário
         descricao: req.body.descricao, // Descrição do filme
+        duracao: req.body.duracao, // Duração do filme
         estreia: req.body.estreia, // Data de estreia do filme
         genero: req.body.genero, // Gênero do filme
         imagem_capa: req.body.imagem_capa, // URL da imagem de capa do filme
@@ -85,11 +85,11 @@ exports.editaFilme = async (req, res) => {
         if (req.body.estreia != null) {
             filme.estreia = req.body.estreia;
         }
+        if (req.body.duracao != null) {
+            filme.duracao = req.body.duracao;
+        }
         if (req.body.genero != null) {
             filme.genero = req.body.genero;
-        }
-        if (req.body.imagemCapa != null) {
-            filme.imagemCapa = req.body.imagemCapa;
         }
 
         const filmeAtualizado = await filme.save();

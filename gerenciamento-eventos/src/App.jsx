@@ -8,6 +8,7 @@ import {CriarFilme} from "./pages/CriarFilme.jsx";
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {Hom} from "./pages/Hom.jsx";
+import {VisualizarFilme} from "./pages/VisualizarFilme.jsx";
 
 function App() {
 
@@ -17,7 +18,6 @@ function App() {
         axios.get('http://localhost:8080/api/filmes')
             .then((response) => {
                 setFilmes(response.data);
-                console.log(response.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -32,6 +32,7 @@ function App() {
             <Route path='/cadastro' element={<Register /> } />
             <Route path='/filme' element={<CriarFilme /> } />
             <Route path='/home' element={<Hom />} />
+            <Route path='/ver-filme/:idDoFilme' element={<VisualizarFilme />} />
             <Route path='*' element={<Hom />} />
         </Routes>
         <Footer />

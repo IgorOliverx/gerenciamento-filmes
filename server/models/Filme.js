@@ -5,11 +5,10 @@ const FilmeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-   // usuario_id: {
-   //     type: mongoose.Schema.Types.ObjectId,
-   //     ref: 'Usuario',
-   //     required: false //por enquanto, somente para testes
-   // },
+    duracao:{
+        type: String,
+        required: true,
+    },
     descricao: {
         type: String,
         required: true

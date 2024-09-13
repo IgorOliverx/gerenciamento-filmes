@@ -9,6 +9,7 @@ export const CriarFilme = () => {
     const [estreia, setEstreia] = useState([]);
     const [genero, setGenero] = useState([]);
     const [imagem_capa, setImagem_capa] = useState([]);
+    const [duracao, setDuracao] = useState([]);
     const [isAuthenticated, setIsAuthenticated] = useState(true);
     const navigate = useNavigate();
 
@@ -42,6 +43,7 @@ export const CriarFilme = () => {
             titulo: titulo,
             genero: genero,
             descricao: descricao,
+            duracao: duracao,
             estreia: estreia,
             imagem_capa: imagem_capa,
         }
@@ -69,7 +71,8 @@ export const CriarFilme = () => {
             <p className='text-2xl w-screen text-center mt-5'>Cadastro de Filme</p>
             <form onSubmit={criarFilme}
                   className='w-2/4 gap-3 flex-wrap rounded-md py-10 bg-slate-900 border-2 border-slate-800 flex relative mx-auto justify-center'>
-                <label htmlFor="titulo" className='relative text-slate-300 w-full left-28 top-2 text-xs'>Título do filme</label>
+                <label htmlFor="titulo" className='relative text-slate-300 w-full left-28 top-2 text-xs'>Título do
+                    filme</label>
                 <Input
                     value={titulo}
                     type='text'
@@ -78,7 +81,8 @@ export const CriarFilme = () => {
                     id='titulo'
                     onChange={(e) => setTitulo(e.target.value)}
                 />
-                <label htmlFor="descricao" className='relative text-slate-300 w-full left-28 top-2 text-xs'>Descrição do filme</label>
+                <label htmlFor="descricao" className='relative text-slate-300 w-full left-28 top-2 text-xs'>Descrição do
+                    filme</label>
                 <textarea
                     value={descricao}
                     placeholder='Descreva o filme...'
@@ -89,7 +93,8 @@ export const CriarFilme = () => {
                     rows="10">
                 </textarea>
 
-                <label className='relative text-slate-500 w-full left-28 top-2 text-xs' htmlFor='estreia'>Data de estreia:</label>
+                <label className='relative text-slate-500 w-full left-28 top-2 text-xs' htmlFor='estreia'>Data de
+                    estreia:</label>
                 <Input
                     value={estreia}
                     type='date'
@@ -98,7 +103,8 @@ export const CriarFilme = () => {
                     id='estreia'
                     onChange={(e) => setEstreia(e.target.value)}
                 />
-                <label htmlFor="genero" className='relative text-slate-300 w-full left-28 top-2 text-xs'>Gênero do filme</label>
+                <label htmlFor="genero" className='relative text-slate-300 w-full left-28 top-2 text-xs'>Gênero do
+                    filme</label>
                 <Input
                     value={genero}
                     type='text'
@@ -107,7 +113,18 @@ export const CriarFilme = () => {
                     id='genero'
                     onChange={(e) => setGenero(e.target.value)}
                 />
-                <label className='relative text-slate-500 w-full left-28 text-xs' htmlFor='imagem_capa'>Imagem de capa:</label>
+                <label htmlFor="duracao" className='relative text-slate-300 w-full left-28 top-2 text-xs'>Duração do
+                    filme</label>
+                <Input
+                    value={duracao}
+                    type='time'
+                    placeholder='Duração'
+                    name='duracao'
+                    id='duracao'
+                    onChange={(e) => setDuracao(e.target.value)}
+                />
+                <label className='relative text-slate-500 w-full left-28 text-xs' htmlFor='imagem_capa'>Imagem de
+                    capa:</label>
                 <Input
                     type='file'
                     name='imagem_capa'
