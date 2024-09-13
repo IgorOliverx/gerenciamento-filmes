@@ -6,9 +6,11 @@
 É necessário executar o BackEnd e FrontEnd separadamente, para isso, siga os seguintes passos:
 1. BackEnd:
 > Abra um primeiro terminal na pasta "`server`" (Na pasta raíz, `cd .\server\`);
+>
 > Execute o comando `node .\server.js`;
 2. Frontend:
 > Abra um segundo terminal na pasta "`appraiser` (Na pasta raíz, `cd .\appraiser\`);
+> 
 > Execute o comando `npm run dev`;
 3. Acessar o localhost:5173, porta onde a aplicação já está rodando!
 ---
