@@ -1,6 +1,16 @@
 # Somativa Node.js - React - MongoDB
-## PLATAFORMA DE GERENCIAMENTO DE EVENTOS
+## PLATAFORMA DE GERENCIAMENTO DE FILMES
 
+# Manual de testes e desenvolvimento:
+## Executar a aplicação:
+É necessário executar o BackEnd e FrontEnd separadamente, para isso, siga os seguintes passos:
+1. BackEnd:
+> Abra um primeiro terminal na pasta "`server`" (Na pasta raíz, `cd .\server\`);
+> Execute o comando `node .\server.js`;
+2. Frontend:
+> Abra um segundo terminal na pasta "`appraiser` (Na pasta raíz, `cd .\appraiser\`);
+> Execute o comando `npm run dev`;
+3. Acessar o localhost:5173, porta onde a aplicação já está rodando!
 ---
 
 # Contexto
@@ -309,14 +319,3 @@ flowchart TD
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0634b621-77a7-45fe-8462-8c37d22df76f" alt="Alta fidelidade" />
 </p>
-
-# Manual de testes e desenvolvimento:
-## Executar a aplicação:
-É necessário executar o BackEnd e FrontEnd separadamente, para isso, siga os seguintes passos:
-1. BackEnd:
-> Abra um primeiro terminal na pasta "`server`" (Na pasta raíz, `cd .\server\`);
-> Execute o comando `node .\server.js`;
-2. Frontend:
-> Abra um segundo terminal na pasta "`appraiser` (Na pasta raíz, `cd .\appraiser\`);
-> Execute o comando `npm run dev`;
-3. Acessar o localhost:5173, porta onde a aplicação já está rodando!
