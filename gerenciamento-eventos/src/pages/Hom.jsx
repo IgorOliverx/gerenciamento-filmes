@@ -4,13 +4,24 @@ import {format} from "date-fns";
 import Logo from '../assets/react.svg';
 import Capa from '../assets/avengers.jpg';
 import {Link} from "react-router-dom";
+
 export const Hom = () => {
+
     const [filmes, setFilmes] = useState([]);
+
+    const[isAuth, setIsAuth] = useState(true);
+
+
 
     useEffect(() => {
         axios.get('http://localhost:8080/api/filmes')
             .then((response) => {
                 setFilmes(response.data);
+                const token = localStorage.getItem('token');
+
+                if(!token) {
+                    setIsAuth(false);
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -32,7 +43,7 @@ export const Hom = () => {
                                 <p>Nota: 9/10</p>
                                 <p>Comentários: 10</p>
                                    <Link className='primary-btn w-60 font-normal text-lg bg-blue-800 rounded-none' to={`/ver-filme/${filme._id}`}>
-                                   Ver Mais
+                                  {isAuth ? 'Editar' : 'Comentar'}
                                    </Link>
 
                             </span>

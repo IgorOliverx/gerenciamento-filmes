@@ -25,7 +25,7 @@ export const VisualizarFilme = () => {
             try {
                 const token = localStorage.getItem("token");
                 if (!token) {
-                    navigate("/resenha");
+                    navigate(`/resenha/${idDoFilme}`);
                     return;
                 }
                 const response = await axios.get(`http://localhost:8080/api/filmes/${idDoFilme}`);
@@ -34,7 +34,7 @@ export const VisualizarFilme = () => {
             } catch (err) {
                 setIsAuth(false);
                 console.error(err);
-                navigate("/resenha");
+                navigate(`/resenha/${idDoFilme}`);
             }
         };
         verificarAuth();

@@ -34,7 +34,7 @@ function App() {
             <Route path='/filme' element={<CriarFilme /> } />
             <Route path='/home' element={<Hom />} />
             <Route path='/ver-filme/:idDoFilme' element={<VisualizarFilme />} />
-            <Route path='/resenha' element={<Resenha /> } />
+            <Route path='/resenha/:idDoFilme' element={<Resenha /> } />
             <Route path='*' element={<Hom />} />
         </Routes>
         {filmes.length >= 1 ? <Footer /> : null}
