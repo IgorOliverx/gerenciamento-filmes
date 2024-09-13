@@ -31,7 +31,9 @@ export const Hom = () => {
                             <span className='w-full flex items-center justify-between mt-4 text-xs font-bold'>
                                 <p>Nota: 9/10</p>
                                 <p>Comentários: 10</p>
-                                   <Link className='primary-btn w-60 font-normal text-lg bg-blue-800 rounded-none' to={`/ver-filme/${filme._id}`}>Ver Resenha</Link>
+                                   <Link className='primary-btn w-60 font-normal text-lg bg-blue-800 rounded-none' to={`/ver-filme/${filme._id}`}>
+                                   Ver Mais
+                                   </Link>
 
                             </span>
 

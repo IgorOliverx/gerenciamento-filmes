@@ -9,6 +9,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {Hom} from "./pages/Hom.jsx";
 import {VisualizarFilme} from "./pages/VisualizarFilme.jsx";
+import {Resenha} from "./pages/Resenha.jsx";
 
 function App() {
 
@@ -33,9 +34,10 @@ function App() {
             <Route path='/filme' element={<CriarFilme /> } />
             <Route path='/home' element={<Hom />} />
             <Route path='/ver-filme/:idDoFilme' element={<VisualizarFilme />} />
+            <Route path='/resenha' element={<Resenha /> } />
             <Route path='*' element={<Hom />} />
         </Routes>
-        <Footer />
+        {filmes.length >= 1 ? <Footer /> : null}
     </>
   )
 }

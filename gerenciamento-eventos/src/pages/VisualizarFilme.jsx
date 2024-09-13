@@ -14,6 +14,7 @@ export const VisualizarFilme = () => {
         e.preventDefault();
         try{
             await axios.delete(`http://localhost:8080/api/filmes/${idDoFilme}`, filme)
+            navigate('/home')
         }catch (err){
             console.error("Erro ao deletar filme" + err);
         }
@@ -24,7 +25,7 @@ export const VisualizarFilme = () => {
             try {
                 const token = localStorage.getItem("token");
                 if (!token) {
-                    navigate("/login");
+                    navigate("/resenha");
                     return;
                 }
                 const response = await axios.get(`http://localhost:8080/api/filmes/${idDoFilme}`);
@@ -33,7 +34,7 @@ export const VisualizarFilme = () => {
             } catch (err) {
                 setIsAuth(false);
                 console.error(err);
-                navigate("/login");
+                navigate("/resenha");
             }
         };
         verificarAuth();
@@ -117,7 +118,7 @@ export const VisualizarFilme = () => {
                 />
                 <button type='submit' className='primary-btn'>Atualizar</button>
             </form>
-                <button onClick={deletarFilme} className='primary-btn bg-red-900 placeholder:bg-red-800'>Deletar Filme</button>
+                <center><button onClick={deletarFilme} className='primary-btn bg-red-900 hover:bg-red-800 w-96 mt-20 mb-20'>Deletar Filme</button></center>
         </>
     );
 };
