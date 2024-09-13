@@ -1,127 +1,150 @@
-const Filme = require('../models/Filme');
+// Importa o modelo de Filme para interagir com a coleção de filmes no banco de dados
+const Filme = require("../models/Filme");
 
 /**
- * Método para Listar Filmes
- * @param req
- * @param res
- * @returns {Promise<void>}
+ * Método para listar todos os filmes
+ * @param req - Objeto da requisição
+ * @param res - Objeto da resposta
+ * @returns {Promise<void>} - Retorna uma Promise que resolve com a lista de filmes ou uma mensagem de erro
  */
 exports.listaFilmes = async (req, res) => {
-    console.log('Método para listar Filmes chamado corretamente.')
-    try {
-        const filmes = await Filme.find();
-        res.json(filmes);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
+  console.log("Método para listar Filmes chamado corretamente.");
+  try {
+    // Busca todos os filmes no banco de dados
+    const filmes = await Filme.find();
+    // Envia a lista de filmes como resposta em formato JSON
+    res.json(filmes);
+  } catch (err) {
+    // Em caso de erro, envia uma mensagem de erro com status 500
+    res.status(500).json({ message: err.message });
+  }
 };
 
 /**
- * Método para Criar Filmes
- * @param req
- * @param res
- * @returns {Promise<void>}
+ * Método para criar um novo filme
+ * @param req - Objeto da requisição
+ * @param res - Objeto da resposta
+ * @returns {Promise<void>} - Retorna uma Promise que resolve com o filme criado ou uma mensagem de erro
  */
 exports.criaFilmes = async (req, res) => {
-    console.log('Método para criar  Filmes chamado corretamente.')
-    const filme = new Filme({
-        titulo: req.body.titulo,
-      //  usuario_id: req.body.usuario_id, // ID do usuário
-        descricao: req.body.descricao, // Descrição do filme
-        estreia: req.body.estreia, // Data de estreia do filme
-        genero: req.body.genero, // Gênero do filme
-        imagem_capa: req.body.imagem_capa, // URL da imagem de capa do filme
-    });
-    try {
-        const novoFilme = await filme.save();
-        if(novoFilme){
-            res.status(201).json(novoFilme);
-        }
-    } catch (err) {
-        console.error(err)
-        res.status(400).json({ message: err.message });
+  console.log("Método para criar Filmes chamado corretamente.");
+  // Cria uma nova instância do modelo Filme com os dados fornecidos na requisição
+  const filme = new Filme({
+    titulo: req.body.titulo,
+    //  usuario_id: req.body.usuario_id, // ID do usuário (comentado no momento)
+    descricao: req.body.descricao, // Descrição do filme
+    estreia: req.body.estreia, // Data de estreia do filme
+    genero: req.body.genero, // Gênero do filme
+    imagem_capa: req.body.imagem_capa, // URL da imagem de capa do filme
+  });
+  try {
+    // Salva o novo filme no banco de dados
+    const novoFilme = await filme.save();
+    // Se o filme foi salvo com sucesso, envia a resposta com status 201 e o filme criado
+    if (novoFilme) {
+      res.status(201).json(novoFilme);
     }
-}
+  } catch (err) {
+    // Em caso de erro, envia uma mensagem de erro com status 400
+    console.error(err);
+    res.status(400).json({ message: err.message });
+  }
+};
 
 /**
- * Método para Buscar Filme por ID
- * @param req
- * @param res
- * @returns {Promise<*>}
+ * Método para buscar um filme por ID
+ * @param req - Objeto da requisição
+ * @param res - Objeto da resposta
+ * @returns {Promise<*>} - Retorna uma Promise que resolve com o filme encontrado ou uma mensagem de erro
  */
 exports.verFilme = async (req, res) => {
-    console.log('Método para listar Filme pelo ID chamado corretamente.')
-    try {
-        const filme = await Filme.findById(req.params.id);
-        if (filme == null) {
-            return res.status(404).json({ message: "Filme não encontrado" });
-        }
-        res.json(filme);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+  console.log("Método para listar Filme pelo ID chamado corretamente.");
+  try {
+    // Busca o filme pelo ID fornecido na URL dos parâmetros
+    const filme = await Filme.findById(req.params.id);
+    // Se o filme não for encontrado, envia uma mensagem de erro com status 404
+    if (filme == null) {
+      return res.status(404).json({ message: "Filme não encontrado" });
     }
+    // Envia o filme encontrado como resposta em formato JSON
+    res.json(filme);
+  } catch (err) {
+    // Em caso de erro, envia uma mensagem de erro com status 500
+    res.status(500).json({ message: err.message });
+  }
 };
 
 /**
- * Método para Atualizar Filme
- * @param req
- * @param res
- * @returns {Promise<*>}
+ * Método para atualizar um filme existente
+ * @param req - Objeto da requisição
+ * @param res - Objeto da resposta
+ * @returns {Promise<*>} - Retorna uma Promise que resolve com o filme atualizado ou uma mensagem de erro
  */
 exports.editaFilme = async (req, res) => {
-    console.log('Método para atualizar Filme chamado corretamente.')
-    try {
-        const filme = await Filme.findById(req.params.id);
-        if (filme == null) {
-            return res.status(404).json({ message: "Filme não encontrado" });
-        }
-
-        if (req.body.titulo != null) {
-            filme.titulo = req.body.titulo;
-        }
-        if (req.body.descricao != null) {
-            filme.descricao = req.body.descricao;
-        }
-        if (req.body.estreia != null) {
-            filme.estreia = req.body.estreia;
-        }
-        if (req.body.genero != null) {
-            filme.genero = req.body.genero;
-        }
-        if (req.body.imagemCapa != null) {
-            filme.imagemCapa = req.body.imagemCapa;
-        }
-
-        const filmeAtualizado = await filme.save();
-        res.json(filmeAtualizado);
-    } catch (err) {
-
-        res.status(400).json({ message: err.message });
+  console.log("Método para atualizar Filme chamado corretamente.");
+  try {
+    // Busca o filme pelo ID fornecido na URL dos parâmetros
+    const filme = await Filme.findById(req.params.id);
+    // Se o filme não for encontrado, envia uma mensagem de erro com status 404
+    if (filme == null) {
+      return res.status(404).json({ message: "Filme não encontrado" });
     }
+
+    // Atualiza os campos do filme somente se novos valores forem fornecidos
+    if (req.body.titulo != null) {
+      filme.titulo = req.body.titulo;
+    }
+    if (req.body.descricao != null) {
+      filme.descricao = req.body.descricao;
+    }
+    if (req.body.estreia != null) {
+      filme.estreia = req.body.estreia;
+    }
+    if (req.body.genero != null) {
+      filme.genero = req.body.genero;
+    }
+    if (req.body.imagemCapa != null) {
+      filme.imagemCapa = req.body.imagemCapa;
+    }
+
+    // Salva as alterações no banco de dados
+    const filmeAtualizado = await filme.save();
+    // Envia o filme atualizado como resposta em formato JSON
+    res.json(filmeAtualizado);
+  } catch (err) {
+    // Em caso de erro, envia uma mensagem de erro com status 400
+    res.status(400).json({ message: err.message });
+  }
 };
 
 /**
- * Método para deletar um filme
- * @param req
- * @param res
- * @returns {Promise<*>}
+ * Método para deletar um filme pelo ID
+ * @param req - Objeto da requisição
+ * @param res - Objeto da resposta
+ * @returns {Promise<*>} - Retorna uma Promise que resolve com uma mensagem de sucesso ou uma mensagem de erro
  */
 exports.deletaFilme = async (req, res) => {
-    console.log('Método para deletar filme chamado corretamente')
-    try {
-        const filme = await Filme.findById(req.params.id);
-        if (filme == null) {
-            return res.status(404).json({ message: "Filme não encontrado" });
-        }
-
-        await filme.deleteOne();
-        res.json({ message: "Filme deletado com sucesso" });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+  console.log("Método para deletar filme chamado corretamente");
+  try {
+    // Busca o filme pelo ID fornecido na URL dos parâmetros
+    const filme = await Filme.findById(req.params.id);
+    // Se o filme não for encontrado, envia uma mensagem de erro com status 404
+    if (filme == null) {
+      return res.status(404).json({ message: "Filme não encontrado" });
     }
+
+    // Deleta o filme do banco de dados
+    await filme.deleteOne();
+    // Envia uma mensagem de sucesso como resposta em formato JSON
+    res.json({ message: "Filme deletado com sucesso" });
+  } catch (err) {
+    // Em caso de erro, envia uma mensagem de erro com status 500
+    res.status(500).json({ message: err.message });
+  }
 };
 
-//// Listar filmes de um usuário específico
+// AINDA NÃO IMPLEMENTADO
+// Listar filmes de um usuário específico
 //exports.listaFilmesUsuario = async (req, res) => {
 //    try {
 //        // Busca filmes pelo ID do usuário
