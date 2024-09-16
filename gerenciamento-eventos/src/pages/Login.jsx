@@ -19,9 +19,11 @@ export const Login = () => {
         try {
             const response = await axios.post('http://localhost:8080/api/usuario/login', usuario);
             localStorage.setItem("token", response.data.token); // Armazene o token no localStorage
+            alert("Login realizado com sucesso!"); // Mensagem de sucesso
             navigate('/home');
         } catch (error) {
-            console.error(error);
+            console.error("Erro ao realizar login:", error);
+            alert("Erro ao realizar login: " + (error.response?.data?.message || "Erro desconhecido")); // Mensagem de erro
         }
     };
 
@@ -48,7 +50,6 @@ export const Login = () => {
                     onChange={(e) => setSenha(e.target.value)}
                 />
                 <button type='submit' className='primary-btn'>Login</button>
-
             </form>
         </>
     );
