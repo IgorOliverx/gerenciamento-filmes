@@ -321,6 +321,7 @@ flowchart TD
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0634b621-77a7-45fe-8462-8c37d22df76f" alt="Alta fidelidade" />
 </p>
+
 ---
 
 # Empresa contratante:
