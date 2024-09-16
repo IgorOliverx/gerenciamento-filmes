@@ -8,9 +8,9 @@ import Input from "../Input/index.jsx";
 export const Resenha = () => {
     // Estados para armazenar os dados do filme e do comentário
     const [filme, setFilme] = useState({});
+    const [comentarios, setComentarios] = useState([]);
     const [titulo, setTitulo] = useState("");
     const [conteudo, setConteudo] = useState("");
-    const [filme_id, setFilme_id] = useState(filme._id)
     const [nota, setNota] = useState(0);
     const IdDoFilme = useParams();
     const navigate = useNavigate();
@@ -29,6 +29,21 @@ export const Resenha = () => {
         fetchFilme();
     }, [IdDoFilme]);
 
+    // Função para buscar os comentários da API
+    const fetchComentarios = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/comentarios?filme_id=${IdDoFilme.idDoFilme}`);
+            setComentarios(response.data);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    // useEffect para buscar os comentários ao carregar a página
+    useEffect(() => {
+        fetchComentarios();
+    }, [IdDoFilme]);
+
     // Função para lidar com a submissão do formulário de comentário
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,12 +51,13 @@ export const Resenha = () => {
             titulo,
             conteudo,
             nota,
-            filme_id
+            filme_id: filme._id
         };
 
         try {
             const response = await axios.post('http://localhost:8080/api/comentarios', comentario);
             console.log("Comentário criado com sucesso:", response.data);
+            fetchComentarios(); // Atualiza a lista de comentários após a criação
             navigate(`/ver-filme/${filme._id}`);
         } catch (error) {
             console.error("Erro ao criar comentário:", error);
@@ -96,6 +112,25 @@ export const Resenha = () => {
                 <input type="hidden" value={filme._id} name='filme_id'/>
                 <button type='submit' className='primary-btn'>Comentar</button>
             </form>
+
+            {/* Exibição dos comentários */}
+            <div className='w-full flex justify-start px-20'>
+                {comentarios.length > 0 ? (
+                    comentarios.map((comentario) => (
+                        <div key={comentario._id} className='w-full mx-auto bg-slate-800 flex border-2 rounded-md mb-10 border-slate-600 mt-10 pt-6'>
+                            <div className='flex w-full justify-center'>
+                                <div className='w-2/3 block'>
+                                    <h2 className='text-3xl w-full h-12 bg-red-800'>{comentario.titulo}</h2>
+                                    <p className='text-sm relative ml-5 mt-7 bg-red-800 text-slate-200'>{comentario.conteudo}</p>
+                                    <span className='block w-full relative text-slate-300 bg-red-800 mt-2 text-sm'>Nota: {comentario.nota}</span>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <p>Nenhum comentário cadastrado</p>
+                )}
+            </div>
         </>
     );
 };
