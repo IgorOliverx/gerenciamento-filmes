@@ -114,15 +114,15 @@ export const Resenha = () => {
             </form>
 
             {/* Exibição dos comentários */}
-            <div className='w-full flex justify-start px-20'>
+            <div className='w-full flex justify-start px-44 flex-wrap'>
                 {comentarios.length > 0 ? (
                     comentarios.map((comentario) => (
                         <div key={comentario._id} className='w-full mx-auto bg-slate-800 flex border-2 rounded-md mb-10 border-slate-600 mt-10 pt-6'>
-                            <div className='flex w-full justify-center'>
+                            <div className='flex w-full justify-start pl-10' >
                                 <div className='w-2/3 block'>
-                                    <h2 className='text-3xl w-full h-12 bg-red-800'>{comentario.titulo}</h2>
-                                    <p className='text-sm relative ml-5 mt-7 bg-red-800 text-slate-200'>{comentario.conteudo}</p>
-                                    <span className='block w-full relative text-slate-300 bg-red-800 mt-2 text-sm'>Nota: {comentario.nota}</span>
+                                    <h2 className='text-3xl w-full h-12'>{comentario.titulo}</h2>
+                                    <p className='text-sm relative ml-5 mt-7 text-slate-200 bottom-2'>{comentario.conteudo}</p>
+                                    <span className='w-full relative left-full text-slate-300 mt-2 text-sm'>Nota: {comentario.nota}</span>
                                 </div>
                             </div>
                         </div>
