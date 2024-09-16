@@ -321,3 +321,12 @@ flowchart TD
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0634b621-77a7-45fe-8462-8c37d22df76f" alt="Alta fidelidade" />
 </p>
+---
+# Empresa contratante:
+## Manual de identidade visual
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a3235949-4938-4cef-ac01-ee17f22ad20f" alt="Manual" />
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/16fb9b67-0928-483f-a82c-db8a574aa239" alt="Manual" />
+</p>
