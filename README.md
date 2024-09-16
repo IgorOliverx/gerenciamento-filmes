@@ -70,7 +70,7 @@ Uma empresa de cinema precisa de uma plataforma para gerenciar seu catálogo de 
 ### Humanos:
 - **Desenvolvedores Backend:** Especialistas em Node.js para implementar a lógica do servidor e integração com MongoDB.
 - **Desenvolvedores Frontend:** Especialistas em React para criar a interface do usuário interativa e responsiva.
-- **Designer de UI/UX:** Para garantir uma experiência de usuário intuitiva e agradável.
+- **Designer de UI/UX:** Para garantir uma experiência de usuário intuitiva e agradável com TailwindCSS.
 - **Administrador de Banco de Dados:** Para configurar e gerenciar o MongoDB.
 - **Analista de Qualidade/Testes:** Para garantir a funcionalidade e a qualidade do sistema através de testes rigorosos.
 
