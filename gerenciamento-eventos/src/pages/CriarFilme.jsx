@@ -51,7 +51,7 @@ export const CriarFilme = () => {
      */
     const criarFilme = async (e) => {
         e.preventDefault();
-        const filme= {
+        const filme = {
             titulo: titulo,
             genero: genero,
             descricao: descricao,
@@ -61,16 +61,16 @@ export const CriarFilme = () => {
         }
 
         try {
-
             await axios.post("http://localhost:8080/api/filmes", filme, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
             });
+            alert("Filme cadastrado com sucesso!"); // Mensagem de sucesso
             navigate("/home");
         } catch (error) {
             console.error("Erro ao criar filme:", error);
-            alert(error);
+            alert("Erro ao criar filme: " + (error.response?.data?.message || "Erro desconhecido")); // Mensagem de erro
         }
     };
 
