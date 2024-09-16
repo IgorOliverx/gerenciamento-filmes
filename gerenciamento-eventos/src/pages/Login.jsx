@@ -48,6 +48,7 @@ export const Login = () => {
                     onChange={(e) => setSenha(e.target.value)}
                 />
                 <button type='submit' className='primary-btn'>Login</button>
+
             </form>
         </>
     );

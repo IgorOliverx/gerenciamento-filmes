@@ -118,7 +118,7 @@ export const VisualizarFilme = () => {
                 />
                 <button type='submit' className='primary-btn'>Atualizar</button>
             </form>
-                <center><button onClick={deletarFilme} className='primary-btn bg-red-900 hover:bg-red-800 w-96 mt-20 mb-20'>Deletar Filme</button></center>
+                <center><button onClick={deletarFilme} className='primary-btn bg-red-900 hover:bg-red-800 w-96 mt-20 relative bottom-16 mb-36'>Deletar Filme</button></center>
         </>
     );
 };
