@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const CriarFilme = () => {
+
+    /**
+     * Estados de criação do filme e autenticação
+     */
     const [titulo, setTitulo] = useState([]);
     const [descricao, setDescricao] = useState([]);
     const [estreia, setEstreia] = useState([]);
@@ -13,6 +17,9 @@ export const CriarFilme = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(true);
     const navigate = useNavigate();
 
+    /**
+     * Chamada do useEffect para verificar a autenticação do usuário e realizar a chamada para a API em listar filmes
+     */
     useEffect(() => {
         const verificarAutenticacao = async () => {
             try {
@@ -37,6 +44,11 @@ export const CriarFilme = () => {
         verificarAutenticacao();
     }, [navigate]);
 
+    /**
+     * Função para criar um filme
+     * @param e
+     * @returns {Promise<void>}
+     */
     const criarFilme = async (e) => {
         e.preventDefault();
         const filme= {

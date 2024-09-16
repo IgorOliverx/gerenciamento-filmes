@@ -16,8 +16,11 @@ app.use(bodyParser.json());
 // Rotas
 const filmeRoutes = require('./routes/filmeRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
+const comentarioRoutes = require('./routes/comentarioRoutes');
+
 app.use('/api', filmeRoutes);
 app.use('/api', usuarioRoutes);
+app.use('/api', comentarioRoutes);
 
 
 

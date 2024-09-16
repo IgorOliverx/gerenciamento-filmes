@@ -6,5 +6,5 @@ const ComentarioController = require("../controllers/comentarioController");
 router.post("/comentarios", ComentarioController.criaComentario);
 router.delete("/comentarios/:id", ComentarioController.deletaComentario);
 router.put("/comentarios/:id", ComentarioController.editaComentario);
-
+router.get('/comentarios', ComentarioController.listaComentarios);
 module.exports = router;

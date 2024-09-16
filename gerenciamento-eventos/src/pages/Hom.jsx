@@ -30,29 +30,30 @@ export const Hom = () => {
 
     return (
         <>
-                {filmes.map((filme) => (
-                <div className='w-full px-24 justify-center mx-auto flex border-t-2 border-b-2 border-slate-800 mt-10 pt-6'>
-                    <div key={filme.id} className='flex w-full justify-center'>
-                        <img src={Capa} alt="teste" className='w-1/3 h-4/5'/>
-                        <div className='w-2/3 pl-10 block'>
-                            <h1 className='text-5xl w-full h-12'>{filme.titulo}</h1>
-                            <span className='block w-full relative text-slate-300 mt-2 text-sm'>{format(new Date(filme.estreia), 'dd/MM/yyyy')} | {filme.duracao.replace(':', 'h')}  | {filme.genero}</span>
-                            <p className='underline font-bold text-white text-xs relative'>usuario@example.com</p>
-                            <p className='text-sm relative ml-5 mt-7 text-slate-200'>{filme.descricao}</p>
-                            <span className='w-full flex items-center justify-between mt-4 text-xs font-bold'>
+            {filmes.length > 0 ? (
+                filmes.map((filme) => (
+                    <div key={filme.id} className='w-full px-24 justify-center mx-auto flex border-t-2 border-b-2 border-slate-800 mt-10 pt-6'>
+                        <div className='flex w-full justify-center'>
+                            <img src={Capa} alt="teste" className='w-1/3 h-4/5'/>
+                            <div className='w-2/3 pl-10 block'>
+                                <h1 className='text-5xl w-full h-12'>{filme.titulo}</h1>
+                                <span className='block w-full relative text-slate-300 mt-2 text-sm'>{format(new Date(filme.estreia), 'dd/MM/yyyy')} | {filme.duracao.replace(':', 'h')}  | {filme.genero}</span>
+                                <p className='underline font-bold text-white text-xs relative'>usuario@example.com</p>
+                                <p className='text-sm relative ml-5 mt-7 text-slate-200'>{filme.descricao}</p>
+                                <span className='w-full flex items-center justify-between mt-4 text-xs font-bold'>
                                 <p>Nota: 9/10</p>
                                 <p>Comentários: 10</p>
-                                   <Link className='primary-btn w-60 font-normal text-lg bg-blue-800 rounded-none' to={`/ver-filme/${filme._id}`}>
-                                  {isAuth ? 'Editar' : 'Comentar'}
-                                   </Link>
-
+                                <Link className='primary-btn w-60 font-normal text-lg bg-blue-800 rounded-none' to={`/ver-filme/${filme._id}`}>
+                                    {isAuth ? 'Editar' : 'Comentar'}
+                                </Link>
                             </span>
-
+                            </div>
                         </div>
                     </div>
-            </div>
-                ))}
+                ))
+            ) : (
+               <center> <p className='text-3xl w-full mt-10 text-red-600'>Nenhum filme cadastrado</p></center>
+            )}
         </>
-
-    )
+    );
 }
